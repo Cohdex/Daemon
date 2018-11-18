@@ -4,7 +4,7 @@
 
 namespace dmn
 {
-	class DAEMON_API Application
+	class DMN_API Application
 	{
 	public:
 		Application();

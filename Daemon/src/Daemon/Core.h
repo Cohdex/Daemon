@@ -1,7 +1,7 @@
 #pragma once
 
-#ifdef DAEMON_EXPORTS
-#define DAEMON_API __declspec(dllexport)
+#ifdef DMN_EXPORTS
+#define DMN_API __declspec(dllexport)
 #else
-#define DAEMON_API __declspec(dllimport)
+#define DMN_API __declspec(dllimport)
 #endif
