@@ -16,12 +16,16 @@ project "Daemon"
 
 	includedirs { }
 
+	defines "DMN_EXPORTS"
+
+	postbuildcommands {
+		"{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Test"
+	}
+
 	filter "system:windows"
 		cppdialect "C++17"
 		staticruntime "On"
 		systemversion "latest"
-
-	defines "DMN_EXPORTS"
 
 	filter "configurations:Debug"
 		defines "DMN_DEBUG"
@@ -65,7 +69,3 @@ project "Test"
 	filter "configurations:Dist"
 		defines "DMN_DIST"
 		optimize "On"
-
-	postbuildcommands {
-		"{COPY} %{cfg.buildtarget.directory}/../Daemon %{cfg.buildtarget.directory}"
-	}
