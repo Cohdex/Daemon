@@ -1,12 +1,14 @@
 #include <Daemon.h>
+#include <Daemon/EntryPoint.h>
 
 class TestApp : public dmn::Application
 {
 public:
 	TestApp()
 	{
-
+		
 	}
+
 	~TestApp()
 	{
 

@@ -2,14 +2,23 @@
 
 #include "Core.h"
 
+#include "Window/Window.h"
+#include "Daemon/Events/WindowEvents.h"
+
 namespace dmn
 {
-	class DMN_API Application
+	class Application
 	{
-	public:
-		Application();
-		virtual ~Application();
+	private:
+		bool m_running;
+		std::unique_ptr<Window> m_window;
 
-		void run();
+		void handleWindowCloseEvent(WindowCloseEvent& e);
+
+	public:
+		DMN_API Application();
+		DMN_API virtual ~Application();
+
+		DMN_API void run();
 	};
 }
