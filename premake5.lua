@@ -1,6 +1,6 @@
 workspace "Daemon"
 	architecture "x86_64"
-	configurations { "Debug", "Release", "Dist" }
+	configurations { "Debug", "Develop", "Release" }
 	startproject "Test"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
@@ -73,14 +73,17 @@ project "Daemon"
 	filter "configurations:Debug"
 		defines "DMN_DEBUG"
 		symbols "On"
+		optimize "Off"
+		
+	filter "configurations:Develop"
+		defines "DMN_DEVELOP"
+		symbols "Off"
+		optimize "On"
 
 	filter "configurations:Release"
 		defines "DMN_RELEASE"
-		optimize "On"
-
-	filter "configurations:Dist"
-		defines "DMN_DIST"
-		optimize "On"
+		symbols "Off"
+		optimize "Full"
 
 project "Test"
 	location "Test"
@@ -108,11 +111,14 @@ project "Test"
 	filter "configurations:Debug"
 		defines "DMN_DEBUG"
 		symbols "On"
+		optimize "Off"
+		
+	filter "configurations:Develop"
+		defines "DMN_DEVELOP"
+		symbols "Off"
+		optimize "On"
 
 	filter "configurations:Release"
 		defines "DMN_RELEASE"
-		optimize "On"
-
-	filter "configurations:Dist"
-		defines "DMN_DIST"
-		optimize "On"
+		symbols "Off"
+		optimize "Full"
