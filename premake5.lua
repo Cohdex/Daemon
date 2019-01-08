@@ -54,7 +54,7 @@ project "Daemon"
 			"glfw3"
 		}
 
-	filter { "configurations:Debug" }
+	filter { "configurations:Debug or Develop" }
 		includedirs {
 			"%{prj.name}/extlib/Glad/Glad-debug/include/"
 		}
@@ -62,7 +62,7 @@ project "Daemon"
 			"%{prj.name}/extlib/Glad/Glad-debug/"
 		}
 
-	filter { "configurations:Release or Dist" }
+	filter { "configurations:Release" }
 		includedirs {
 			"%{prj.name}/extlib/Glad/Glad/include/"
 		}
