@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Daemon/Core.h"
-
 #include "Daemon/Events/Event.h"
 
 #include <memory>
@@ -32,10 +30,10 @@ namespace dmn
 		EventDispatcher() = default;
 
 	public:
-		DMN_API static EventDispatcher& getInstance();
+		static EventDispatcher& getInstance();
 
 		template<typename T>
-		DMN_API inline void addListener(EventListenerFn<T> listener)
+		inline void addListener(EventListenerFn<T> listener)
 		{
 			static_assert(std::is_base_of<Event, T>(), "Can only listen to derived types of dmn::Event");
 			size_t typeHash = typeid(T).hash_code();
@@ -43,7 +41,7 @@ namespace dmn
 		}
 
 		template<typename T>
-		DMN_API inline void dispatch(T& e)
+		inline void dispatch(T& e)
 		{
 			static_assert(std::is_base_of<Event, T>(), "Can only dispatch derived types of dmn::Event");
 			auto eventListeners = m_listeners.find(typeid(T).hash_code());

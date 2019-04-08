@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Daemon/Core.h"
-
 #include <string>
 #include <memory>
 
@@ -20,7 +18,7 @@ namespace dmn
 		EWindowMode windowMode;
 	};
 
-	class DMN_API Window
+	class Window
 	{
 	public:
 		virtual ~Window() {};

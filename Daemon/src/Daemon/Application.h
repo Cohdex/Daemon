@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Core.h"
-
 #include "Window/Window.h"
 #include "Daemon/Events/WindowEvents.h"
 
@@ -16,9 +14,9 @@ namespace dmn
 		void handleWindowCloseEvent(WindowCloseEvent& e);
 
 	public:
-		DMN_API Application();
-		DMN_API virtual ~Application();
+		Application();
+		virtual ~Application();
 
-		DMN_API void run();
+		void run();
 	};
 }

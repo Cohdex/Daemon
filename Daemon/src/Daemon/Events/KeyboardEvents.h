@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Daemon/Core.h"
-
 #include "Event.h"
 
 namespace dmn
@@ -15,14 +13,14 @@ namespace dmn
 		int m_key;
 		int m_mods;
 
-		DMN_API inline KeyEvent(int key, int mods)
+		inline KeyEvent(int key, int mods)
 			: m_key(key), m_mods(mods)
 		{
 		}
 
 	public:
-		DMN_API inline int getKey() const { return m_key; }
-		DMN_API inline int getMods() const { return m_mods; }
+		inline int getKey() const { return m_key; }
+		inline int getMods() const { return m_mods; }
 	};
 
 	class KeyPressedEvent : public KeyEvent
@@ -31,12 +29,12 @@ namespace dmn
 		bool m_repeated;
 
 	public:
-		DMN_API inline KeyPressedEvent(int key, int mods, bool repeated)
+		inline KeyPressedEvent(int key, int mods, bool repeated)
 			: KeyEvent(key, mods), m_repeated(repeated)
 		{
 		}
 
-		DMN_API inline bool isRepeated() const { return m_repeated; }
+		inline bool isRepeated() const { return m_repeated; }
 	};
 
 	class KeyReleasedEvent : public KeyEvent
@@ -44,7 +42,7 @@ namespace dmn
 	private:
 
 	public:
-		DMN_API inline KeyReleasedEvent(int key, int mods)
+		inline KeyReleasedEvent(int key, int mods)
 			: KeyEvent(key, mods)
 		{
 		}

@@ -7,8 +7,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 project "Daemon"
 	location "Daemon"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
+	cppdialect "C++17"
+	staticruntime "On"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -35,13 +37,7 @@ project "Daemon"
 		"DMN_EXPORTS"
 	}
 
-	postbuildcommands {
-		("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Test")
-	}
-
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		includedirs {
@@ -74,21 +70,26 @@ project "Daemon"
 		defines "DMN_DEBUG"
 		symbols "On"
 		optimize "Off"
+		runtime "Debug"
 		
 	filter "configurations:Develop"
 		defines "DMN_DEVELOP"
 		symbols "Off"
 		optimize "On"
+		runtime "Release"
 
 	filter "configurations:Release"
 		defines "DMN_RELEASE"
 		symbols "Off"
 		optimize "Full"
+		runtime "Release"
 
 project "Test"
 	location "Test"
 	kind "ConsoleApp"
 	language "C++"
+	cppdialect "C++17"
+	staticruntime "On"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -104,21 +105,22 @@ project "Test"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 	filter "configurations:Debug"
 		defines "DMN_DEBUG"
 		symbols "On"
 		optimize "Off"
+		runtime "Debug"
 		
 	filter "configurations:Develop"
 		defines "DMN_DEVELOP"
 		symbols "Off"
 		optimize "On"
+		runtime "Release"
 
 	filter "configurations:Release"
 		defines "DMN_RELEASE"
 		symbols "Off"
 		optimize "Full"
+		runtime "Release"
